@@ -4,14 +4,29 @@
 
 #pragma region gameInformation
 
-std::string g_WindowTitle{ "DAExx LastName FirstName - Project name" };
-float g_WindowWidth{ 800.f };
-float g_WindowHeight{ 600.f };
+std::string g_WindowTitle{ "DAE24 ctrl-J - Space invaders" };
+float g_WindowWidth{ 616.f };
+float g_WindowHeight{ 704.f };
 
 #pragma endregion gameInformation
 
 #pragma region myStructs
-
+struct Projectile
+{
+	Rectf size;
+	float speed;
+	float scale;
+};
+struct Player
+{
+	Point2f pos;
+	Projectile playerProjectile;
+	float movementSpeed;
+	float width;
+	float height;
+	float scale;
+	int lives;
+};
 #pragma endregion
 
 #pragma region myVariables
