@@ -28,12 +28,26 @@ struct Player
 	float scale;
 	int lives;
 };
+struct Invaders
+{
+	Rectf hitbox;
+	int speed;
+	float scale;
+	int desendingTime;
+};
+
 #pragma endregion
 
 #pragma region myVariables
 Player g_Player{};
 float g_BeginBorder{ 100.f };
 float g_EndBorder{ 500.f };
+
+const int size{ 22 };
+Invaders arrInvaderOctopus[size]{ };
+Invaders arrInvaderCrab[size]{ };
+Invaders arrInvaderSquid[size]{ };
+
 #pragma endregion
 
 #pragma region gameFunctions
@@ -57,4 +71,8 @@ void InitImage();
 void DrawImage();
 void DeleteImage();
 void DrawPlayer();
+
+void InitialiseInvaders();
+void DrawInvaders();
+
 #pragma endregion
