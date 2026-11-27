@@ -27,9 +27,22 @@ struct Player
 	float scale;
 	int lives;
 };
+struct Invaders
+{
+	Rectf hitbox;
+	int speed;
+	float scale;
+	int desendingTime;
+};
+
 #pragma endregion
 
 #pragma region myVariables
+
+const int size{ 22 };
+Invaders arrInvaderOctopus[size]{ };
+Invaders arrInvaderCrab[size]{ };
+Invaders arrInvaderSquid[size]{ };
 
 #pragma endregion
 
@@ -49,5 +62,8 @@ void OnMouseUpEvent(const SDL_MouseButtonEvent& e);
 #pragma endregion inputHandling
 
 #pragma region myFunctionDeclarations
+
+void InitialiseInvaders();
+void DrawInvaders();
 
 #pragma endregion
