@@ -1,5 +1,5 @@
 #pragma once
-
+using namespace utils;
 #include "engine/pch.h"
 
 #pragma region gameInformation
@@ -19,6 +19,7 @@ struct Projectile
 };
 struct Player
 {
+	Texture image;
 	Point2f pos;
 	Projectile playerProjectile;
 	float movementSpeed;
@@ -52,5 +53,8 @@ void OnMouseUpEvent(const SDL_MouseButtonEvent& e);
 
 #pragma region myFunctionDeclarations
 void InitPlayer();
+void InitImage();
+void DrawImage();
+void DeleteImage();
 void DrawPlayer();
 #pragma endregion

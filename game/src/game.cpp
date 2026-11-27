@@ -7,7 +7,10 @@ using namespace utils;
 // Load textures and initialize other resources here.
 void Start()
 {
+	
+	InitImage();
 	InitPlayer();
+	
 }
 
 // Draw your game objects here.
@@ -25,6 +28,7 @@ void Update(float elapsedSec)
 // Delete textures and free other resources here.
 void End()
 {
+	DeleteImage();
 }
 
 #pragma endregion gameFunctions
@@ -78,19 +82,38 @@ void OnMouseUpEvent(const SDL_MouseButtonEvent& e)
 #pragma region myFunctionDefinitions
 void InitPlayer()
 {
+	int playerOffset{ 100 };
+
 	g_Player.lives = 3;
 	g_Player.pos.x = g_WindowWidth / 2;
-	g_Player.pos.y = g_WindowHeight / 8;
+	g_Player.pos.y = g_WindowHeight - playerOffset;
 	g_Player.movementSpeed = 5;
 	g_Player.height = 50;
 	g_Player.width = 50;
-	g_Player.scale = 1;
+	g_Player.scale = 0.5f;
 	
 }
 void DrawPlayer()
 {
-	//tempory as rect for testing purpose
-	SetColor(0.f, 1.f, 0.f);
-	FillRect(g_Player.pos, g_Player.width, g_Player.height);
+	Rectf playerBounds{ g_Player.pos.x, g_Player.pos.y, g_Player.width * g_Player.scale, g_Player.height * g_Player.scale };
+	//DrawTexture(g_Player.image, g_Player.pos, Point2f{ g_Player.width, g_Player.height });
+	DrawTexture(g_Player.image, playerBounds);
+
+}
+void InitImage()
+{
+	bool imageLoaded{ TextureFromFile("Player.png", g_Player.image) };
+	if (!imageLoaded)
+	{
+		std::cout << "Can not find the player texture \n";
+	}
+}
+void DrawImage()
+{
+
+}
+void DeleteImage()
+{
+	DeleteTexture(g_Player.image);
 }
 #pragma endregion
